@@ -3,19 +3,30 @@ import { NgModule } from '@angular/core';
 import {HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
-import { ValueComponent } from './value/value.component';
 import { HttpClient } from 'selenium-webdriver/http';
+import { LoginComponent } from './login/login.component';
+import { FormsModule } from '@angular/forms';
+import { AuthService } from './_services/auth.service';
+import { NavComponent } from './nav/nav.component';
+import { HomeComponent } from './home/home.component';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
    declarations: [
       AppComponent,
-      ValueComponent
+      LoginComponent,
+      NavComponent,
+      HomeComponent,
+      RegisterComponent
    ],
    imports: [
       BrowserModule,
-      HttpClientModule
+      HttpClientModule,
+      FormsModule
    ],
-   providers: [],
+   providers: [
+      AuthService
+   ],
    bootstrap: [
       AppComponent
    ]

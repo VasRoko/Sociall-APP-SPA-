@@ -1,0 +1,8 @@
+.fa-user-circle {
+    font-size: 30px;
+}
+
+.fa-user-circle:hover {
+    color:#28a745;
+    cursor: pointer;
+}

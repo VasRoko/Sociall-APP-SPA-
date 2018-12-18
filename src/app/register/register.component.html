@@ -1,0 +1,15 @@
+<form #registerForm="ngForm" class="form__register"(ngSubmit)="register()" >
+
+    <input type="email" class="form-control" placeholder="Email Address" name="useremail" required [(ngModel)]="model.useremail">
+    <input type="" class="form-control" placeholder="Username" name="username" required [(ngModel)]="model.username">
+    <input type="password" class="form-control" placeholder="Password"  name="password" required [(ngModel)]="model.password">
+  
+    <br>
+  
+    <button class="btn btn-lg btn-success btn-block" type="submit">Register</button>
+    <hr>
+    <div class="text-center">
+        <p>Already registered ? <a href="#" (click)="hideComponent()">Sign In</a></p>
+    </div>
+  </form>
+  

@@ -1,0 +1,13 @@
+<form #loginForm="ngForm" class="form__login" (ngSubmit)="login()">
+
+  <input type="" id="inputUsername" class="form-control" placeholder="Username" name="username" required="" autofocus="" [(ngModel)]="model.username">
+  <input type="password" id="inputPassword" class="form-control" placeholder="Password"  name="password" required="" [(ngModel)]="model.password">
+
+  <br>
+
+  <button class="btn btn-lg btn-success btn-block" [disabled]="!loginForm.valid" type="submit">Sign in</button>
+  <hr>
+  <div class="text-center">
+      <p>Don't have an account? <a href="#" (click)="hideComponent()"> Sign up </a></p>
+  </div>
+</form>
