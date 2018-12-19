@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit {
       next => {
         console.log('Logged in successfully');
       }, error => {
-        console.log('failed to login');
+        console.log(error);
       });
   }
 
