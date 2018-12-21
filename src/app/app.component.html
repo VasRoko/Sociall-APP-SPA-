@@ -1,3 +1,23 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<app-home></app-home>
+<div *ngIf="!loggedIn()" class="container-fluid" style="padding: 0px;">
+    <div class="container h-100">
+        <div class="row align-items-center h-100">
+            <div class="col-sm-12 col-md-7 col-lg-8">
+                <img src="assets/img/ilustratia.png" class="img-fluid">
+            </div>
+            <div class="col-sm-12 col-md-5 col-lg-4">
+                <div *ngIf="!loginMode" class="">
+                    <app-register (hideRegister)="hideRegister($event)"></app-register>
+                </div>
+                <div *ngIf="loginMode" class="">
+                    <app-login (hideLogin)="hideLogin($event)"></app-login>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
+<div *ngIf="loggedIn()" class="main">
+    <app-nav></app-nav>
+    <router-outlet></router-outlet>
+</div>

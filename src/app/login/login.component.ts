@@ -1,5 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { AuthService } from '../_services/auth.service';
+import { AlertifyjsService } from '../_services/alertifyjs.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -11,7 +13,7 @@ export class LoginComponent implements OnInit {
   @Output() hideLogin = new EventEmitter();
   model: any = {};
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private alertify: AlertifyjsService, private router: Router) { }
 
   ngOnInit() {
   }
@@ -19,10 +21,16 @@ export class LoginComponent implements OnInit {
   login() {
     this.authService.login(this.model).subscribe(
       next => {
-        console.log('Logged in successfully');
+        this.alertify.success('Logged in successfully');
       }, error => {
-        console.log(error);
+        this.alertify.error(error);
+      }, () => {
+        this.router.navigate(['/members']);
       });
+  }
+  loggedIn() {
+    const token = localStorage.getItem('token');
+    return !!token;
   }
 
   hideComponent() {

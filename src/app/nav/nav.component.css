@@ -2,7 +2,16 @@
     font-size: 30px;
 }
 
-.fa-user-circle:hover {
+.account_hover:hover {
     color:#28a745;
     cursor: pointer;
 }
+
+.dropdown-item {
+    cursor: pointer;
+}
+
+.dropdown-menu-fix {
+    left: -85px !important;
+}
+
