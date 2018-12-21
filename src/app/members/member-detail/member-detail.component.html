@@ -4,13 +4,13 @@
       <div class="card">
           <img src="{{ user?.photoUrl }}" class="card-img-top img-thumbnail" alt="{{ user?.username }}">
           <div class="card-body">
-              <p><strong>Last Active:</strong> {{ user?.lastActive}} </p>
+              <p><strong>Last Active:</strong> {{ user.lastActive}} </p>
               <hr>
-              <p><strong>Member Since:</strong> {{ user?.created}} </p>
+              <p><strong>Member Since:</strong> {{ user.created}} </p>
               <p><strong>Age:</strong>
                 {{ user?.age }}</p>
               <p><strong>Location: </strong></p>
-              <p><i class="fa fa-globe"></i> {{ user?.city }}, {{user?.country}}
+              <p><i class="fa fa-globe"></i> {{ user.city }}, {{user?.country}}
           </div>
           <div class="card-footer btn-group d-flex">
               <button class="btn btn-danger w-100"><i class="fa fa-heart"></i> Like</button>
@@ -24,13 +24,13 @@
           <tabset class="member-tabset">
             <tab heading="About {{user?.username}}">
               <h4>Description</h4>
-              <p>{{ user?.lookingFor }}</p>
+              <p>{{ user.lookingFor }}</p>
               <h4>Looking For</h4>
-              <p>{{ user?.lookingFor }}</p>
+              <p>{{ user.lookingFor }}</p>
             </tab>
             <tab heading="Interests">
                 <h4>Interests</h4>
-                <p>{{ user?.interests }}</p>
+                <p>{{ user.interests }}</p>
             </tab>
             <tab heading="Photos">
                 <h4>Photos</h4>
