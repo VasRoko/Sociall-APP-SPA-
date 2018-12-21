@@ -12,15 +12,15 @@
     <div class="row">
       <div class="col-sm-4">
         <div class="card">
-            <img src="{{ user?.photoUrl }}" class="card-img-top img-thumbnail" alt="{{ user?.username }}">
+            <img src="{{ user.photoUrl }}" class="card-img-top img-thumbnail" alt="{{ user.username }}">
             <div class="card-body">
                 <p><strong>Last Active:</strong> {{ user.lastActive}} </p>
                 <hr>
                 <p><strong>Member Since:</strong> {{ user.created}} </p>
                 <p><strong>Age:</strong>
-                  {{ user?.age }}</p>
+                  {{ user.age }}</p>
                 <p><strong>Location: </strong></p>
-                <p><i class="fa fa-globe"></i> {{ user.city }}, {{user?.country}}
+                <p><i class="fa fa-globe"></i> {{ user.city }}, {{user.country}}
             </div>
             <div class="card-footer d-flex">
                 <button [disabled]="!editForm.dirty" form="editForm" class="btn btn-success btn-block"><i class="fa fa-floppy-o mr-1"></i> Save Changes</button>
@@ -33,7 +33,7 @@
               <tab heading="Edit Profile">
                 <form #editForm="ngForm" id="editForm" (ngSubmit)="updateUser()">
                   <h4 class="mb-2">Introduction</h4>
-                  <textarea name="introduction" rows="5" class="form-control profile_text_editor mb-2" [(ngModel)]="user.introduction"></textarea>
+                  <textarea name="description" rows="5" class="form-control profile_text_editor mb-2" [(ngModel)]="user.description"></textarea>
                   <h4 class="mb-2">Looking For</h4>
                   <textarea name="lookingfor" rows="5" class="form-control profile_text_editor mb-2" [(ngModel)]="user.lookingFor"></textarea>
                   <h4 class="mb-2">Interests</h4>
