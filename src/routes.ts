@@ -6,13 +6,15 @@ import { AuthGuard } from './app/_guards/auth.guard';
 import { MemberDetailComponent } from './app/members/member-detail/member-detail.component';
 import { MemberDetailResolver } from './app/_resolvers/member-detail.resolver';
 import { MemberListResolver } from './app/_resolvers/member-list.resolver';
+import { MemberEditComponent } from './app/members/member-edit/member-edit.component';
+import { MemberEditResolver } from './app/_resolvers/member-edit.resolver';
 
 export const appRoutes: Routes = [
     { path: 'members', component: MemberListComponent, canActivate: [AuthGuard], resolve: {users: MemberListResolver} },
     { path: 'members/:id', component: MemberDetailComponent, canActivate: [AuthGuard], resolve: {user: MemberDetailResolver} },
+    { path: 'member/edit', component: MemberEditComponent, resolve: {user: MemberEditResolver} },
     { path: 'messages', component: MessagesComponent, canActivate: [AuthGuard] },
     { path: 'lists', component: ListsComponent, canActivate: [AuthGuard] },
-    // If application has more than 5 protected routers user below
     // {
     //     path: '',
     //     runGuardsAndResolvers: 'always',
