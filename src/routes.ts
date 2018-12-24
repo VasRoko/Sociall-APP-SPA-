@@ -22,6 +22,6 @@ export const appRoutes: Routes = [
     //     canActivate: [AuthGuard],
     //     children: []
     // },
-    { path: '**', redirectTo: '/', pathMatch: 'full' },
+    { path: '**', redirectTo: '', pathMatch: 'full' },
 ];
 
