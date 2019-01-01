@@ -8,8 +8,8 @@ export class AlertifyjsService {
 
   constructor() { }
 
-  confim(message: string, okCallBack: () => any) {
-    alertify.confim(message, function(e) {
+  confirm(message: string, okCallBack: () => any) {
+    alertify.confirm(message, function(e) {
       if (e) {
         okCallBack();
       } else {}
