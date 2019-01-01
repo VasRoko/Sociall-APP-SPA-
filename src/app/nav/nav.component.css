@@ -12,6 +12,21 @@
 }
 
 .dropdown-menu-fix {
-    left: -85px !important;
+    left: -20px !important;
 }
 
+img {
+    max-height: 50px;
+    border: 2px solid lightgray;
+    display: inline;
+}
+
+.dropdown-toggle:hover .img {
+    border: 2px solid #2196F3;
+}
+
+.text-capitalize {
+    font-size: 14px;
+    font-weight: 900;
+    padding: 0px 11px;
+}

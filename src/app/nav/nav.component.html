@@ -21,8 +21,10 @@
           <li class="nav-item dropdown account_hover" dropdown>
             
               <a class="nav-link dropdown-toggle" data-toggle="dropdown" dropdownToggle>
-                <i class="fa fa-user-circle"></i>
-                <!-- {{ authService.decodedToken?.unique_name | titlecase }} -->
+                <span>
+                  <img src="{{ photoUrl }}" class="" alt="{{ authService.currentUser.username }}">
+                </span>
+                <span class="text-capitalize">{{ authService.currentUser.username }}</span>
               </a>
     
               
