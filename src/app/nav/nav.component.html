@@ -22,7 +22,7 @@
             
               <a class="nav-link dropdown-toggle" data-toggle="dropdown" dropdownToggle>
                 <span>
-                  <img src="{{ photoUrl }}" class="" alt="{{ authService.currentUser.username }}">
+                  <img src="{{ photoUrl || '../../assets/img/placeholder-user.png'  }}" class="" alt="{{ authService.currentUser.username }}">
                 </span>
                 <span class="text-capitalize">{{ authService.currentUser.username }}</span>
               </a>
