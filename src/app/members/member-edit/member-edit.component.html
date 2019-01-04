@@ -14,9 +14,9 @@
         <div class="card">
             <img src="{{ photoUrl || '../../../assets/img/placeholder-user.png' }}" class="card-img-top img-thumbnail" alt="{{ user.username }}">
             <div class="card-body">
-                <p><strong>Last Active:</strong> {{ user.lastActive}} </p>
+                <p><strong>Last Active:</strong> {{ user.lastActive | timeAgo }} </p>
                 <hr>
-                <p><strong>Member Since:</strong> {{ user.created}} </p>
+                <p><strong>Member Since:</strong> {{ user.created | date: 'mediumDate'}} </p>
                 <p><strong>Age:</strong>
                   {{ user.age }}</p>
                 <p><strong>Location: </strong></p>
