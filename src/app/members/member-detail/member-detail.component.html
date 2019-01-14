@@ -19,14 +19,13 @@
                 <div *ngIf="!user.isLiked"><i class="fa fa-heart-o"></i> Like</div>
                 <div *ngIf="user.isLiked"><i class="fa fa-heart"></i> Liked</div>
               </button>
-              <button class="btn btn-primary w-100"> Follow </button>
-              <button class="btn btn-success w-100"><i class="fa fa-envelope"></i> Message</button>
+              <button class="btn btn-success w-100" (click)="selectTab(3)"><i class="fa fa-envelope"></i> Message</button>
           </div>
       </div>
     </div>
     <div class="col-sm-8 card">
         <div class="tap-panel">
-          <tabset class="member-tabset">
+          <tabset class="member-tabset" #memberTabs>
             <tab heading="About {{user.username}}">
               <h4>Description</h4>
               <p>{{ user.description }}</p>
