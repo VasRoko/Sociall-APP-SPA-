@@ -11,6 +11,7 @@ export interface User {
     photoUrl: string;
     city: string;
     country: string;
+    isLiked: boolean;
     interests?: string;
     description?: string;
     lookingFor?: string;

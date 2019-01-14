@@ -15,7 +15,10 @@
               <p><i class="fa fa-globe"></i> {{ user.city }}, {{user.country}}
           </div>
           <div class="card-footer btn-group d-flex">
-              <button class="btn btn-danger w-100"><i class="fa fa-heart"></i> Like</button>
+              <button class="btn btn-danger w-100" (click)="sendLike(user.id)">
+                <div *ngIf="!user.isLiked"><i class="fa fa-heart-o"></i> Like</div>
+                <div *ngIf="user.isLiked"><i class="fa fa-heart"></i> Liked</div>
+              </button>
               <button class="btn btn-primary w-100"> Follow </button>
               <button class="btn btn-success w-100"><i class="fa fa-envelope"></i> Message</button>
           </div>
@@ -39,8 +42,7 @@
                 <ngx-gallery [options]="galleryOptions" [images]="galleryImages"></ngx-gallery>
             </tab>
             <tab heading="Messages">
-                <h4>Messages</h4>
-                
+                <app-member-messages [recipientId]="user.id"></app-member-messages> 
             </tab>
           </tabset>
         </div>

@@ -4,6 +4,7 @@ import { UserService } from 'src/app/_services/user.service';
 import { AlertifyjsService } from 'src/app/_services/alertifyjs.service';
 import { ActivatedRoute } from '@angular/router';
 import { NgxGalleryOptions, NgxGalleryImage, NgxGalleryAnimation } from 'ngx-gallery';
+import { AuthService } from 'src/app/_services/auth.service';
 
 @Component({
   selector: 'app-member-detail',
@@ -15,7 +16,10 @@ export class MemberDetailComponent implements OnInit {
   galleryOptions: NgxGalleryOptions[];
   galleryImages: NgxGalleryImage[];
 
-  constructor(private userService: UserService, private alertify: AlertifyjsService, private route: ActivatedRoute) { }
+  constructor(private authService: AuthService,
+    private userService: UserService,
+    private alertify: AlertifyjsService,
+    private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.route.data.subscribe(data => {
@@ -24,8 +28,8 @@ export class MemberDetailComponent implements OnInit {
 
     this.galleryOptions = [
       {
-        width: '500px',
-        height:  '500px',
+        width: '100%',
+        height:  '550px',
         imagePercent: 100,
         thumbnailsColumns: 5,
         imageAnimation: NgxGalleryAnimation.Slide,
@@ -50,4 +54,16 @@ export class MemberDetailComponent implements OnInit {
     return imagesUrls;
   }
 
+  sendLike(id: number) {
+    this.userService.sendLike(this.authService.decodedToken.nameid, id).subscribe(data => {
+      this.user.isLiked = !this.user.isLiked;
+      if (this.user.isLiked) {
+        this.alertify.success('You have liked ' + this.user.username);
+      } else {
+        this.alertify.success('Like removed ' + this.user.username);
+      }
+    }, error => {
+      this.alertify.error(error);
+    });
+  }
 }

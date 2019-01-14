@@ -23,7 +23,11 @@ export class LoginComponent implements OnInit {
       next => {
         this.alertify.success('Logged in successfully');
       }, error => {
-        this.alertify.error(error);
+        if (error === 'Unauthorized') {
+          this.alertify.error('The username or password you entered is incorrect');
+        } else {
+          this.alertify.error(error);
+        }
       }, () => {
         this.router.navigate(['/members']);
       });

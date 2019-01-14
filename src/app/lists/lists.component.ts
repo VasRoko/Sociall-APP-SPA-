@@ -38,7 +38,6 @@ export class ListsComponent implements OnInit {
     }, error => {
       this.alertify.error(error);
     });
-    console.log(this.users);
   }
 
   pageChanged(event: any): void {

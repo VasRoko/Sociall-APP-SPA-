@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { User } from 'src/app/_models/user';
 import { AuthService } from 'src/app/_services/auth.service';
 import { UserService } from 'src/app/_services/user.service';
@@ -18,9 +18,14 @@ export class MemberCardComponent implements OnInit {
   ngOnInit() {
   }
 
-  sendLike(id: number) {
+  setLike(id: number) {
     this.userService.sendLike(this.authService.decodedToken.nameid, id).subscribe(data => {
-      this.alertify.success('You have licked ' + this.user.username);
+      this.user.isLiked = !this.user.isLiked;
+      if (this.user.isLiked) {
+        this.alertify.success('You have liked ' + this.user.username);
+      } else {
+        this.alertify.success('Like removed ' + this.user.username);
+      }
     }, error => {
       this.alertify.error(error);
     });
