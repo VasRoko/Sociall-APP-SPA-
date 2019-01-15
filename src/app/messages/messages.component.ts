@@ -15,7 +15,6 @@ export class MessagesComponent implements OnInit {
   messages: Message[];
   pagination: Pagination;
   messageContainer = 'Unread';
-
   constructor(
     private userService: UserService,
     private authService: AuthService,
@@ -30,15 +29,15 @@ export class MessagesComponent implements OnInit {
   }
 
   loadMessages() {
-    this.userService.getMessages(
-    this.authService.decodedToken.nameid,
-    this.pagination.currentPage,
-    this.pagination.itemsPerPage, this.messageContainer).subscribe((res: PaginatedResult<Message[]>) => {
-      this.messages = res.result;
-      this.pagination = res.pagination;
-    }, error => {
-      this.alertify.error(error);
-    });
+      this.userService.getMessages(
+      this.authService.decodedToken.nameid,
+      this.pagination.currentPage,
+      this.pagination.itemsPerPage, this.messageContainer).subscribe((res: PaginatedResult<Message[]>) => {
+        this.messages = res.result;
+        this.pagination = res.pagination;
+      }, error => {
+        this.alertify.error(error);
+      });
   }
 
   deleteMessage(id: number) {

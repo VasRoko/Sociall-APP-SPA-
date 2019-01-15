@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, BehaviorSubject } from 'rxjs';
 import { User } from '../_models/user';
 import { PaginatedResult } from '../_models/pagination';
 import { map } from 'rxjs/operators';
@@ -11,7 +11,6 @@ import { Message } from '../_models/message';
   providedIn: 'root'
 })
 export class UserService {
-
   baseUrl = environment.apiUrl;
 
   constructor(private http: HttpClient) { }
@@ -75,7 +74,6 @@ export class UserService {
   getMessages(id: number, page?, itemsPerPage?, messageContainer?) {
     const paginatedResult: PaginatedResult<Message[]> = new PaginatedResult();
     let params = new HttpParams();
-
     params = params.append('MessageContainer', messageContainer);
     if (page != null && itemsPerPage != null) {
       params = params.append('pageNumber', page);
