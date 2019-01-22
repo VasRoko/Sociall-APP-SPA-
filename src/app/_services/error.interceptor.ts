@@ -9,14 +9,15 @@ export class ErrorInterceptor implements HttpInterceptor {
         return next.handle(request).pipe(
             catchError(error => {
                 if (error instanceof HttpErrorResponse) {
-                    // if (error.status === 401) {
-                    //     return throwError(error.statusText);
-                    // }
                     const applicationError = error.headers.get('Application-Error');
                     if (applicationError) {
                         return throwError(applicationError);
                     }
                     const serverError = error.error;
+                    const statusCode = error.status;
+                    if (statusCode === 401) {
+                        return throwError(statusCode);
+                    }
                     let modelStateError = '';
                     if (serverError && typeof serverError === 'object') {
                         for (const key in serverError) {
@@ -25,7 +26,8 @@ export class ErrorInterceptor implements HttpInterceptor {
                             }
                         }
                     }
-                    return throwError(modelStateError || serverError || 'Server Error');
+
+                    return throwError( modelStateError || serverError || 'Server Error');
                 }
             })
         );

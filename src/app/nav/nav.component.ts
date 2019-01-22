@@ -18,12 +18,10 @@ export class NavComponent implements OnInit {
 
   ngOnInit() {
     this.authService.currentPhotoUrl.subscribe(photoUrl => this.photoUrl = photoUrl);
-    setInterval(a => {
-      this.userService.getMessages(
-        this.authService.decodedToken.nameid, null, null, 'Unread').subscribe( (res) => {
-          this.messageCount = res.pagination.totalItems;
-        });
-    }, 1000, [] );
+      // this.userService.getMessages(
+      //   this.authService.decodedToken.nameid, null, null, 'Unread').subscribe( (res) => {
+      //     this.messageCount = res.pagination.totalItems;
+      //   });
   }
 
   loggedIn() {

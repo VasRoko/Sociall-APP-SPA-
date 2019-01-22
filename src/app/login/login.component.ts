@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
       next => {
         this.alertify.success('Logged in successfully');
       }, error => {
-        if (error === 'Unauthorized') {
+        if (error === 401) {
           this.alertify.error('The username or password you entered is incorrect');
         } else {
           this.alertify.error(error);
