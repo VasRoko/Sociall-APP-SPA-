@@ -11,19 +11,24 @@ import { MemberEditResolver } from './app/_resolvers/member-edit.resolver';
 import { PreventUnsavedChanges } from './app/_guards/prevent-unsaved-changes.guard';
 import { ListsResolver } from './app/_resolvers/list.resolver';
 import { MessagesResolver } from './app/_resolvers/messages.resolver';
+import { AdminPanelComponent } from './app/admin/admin-panel/admin-panel.component';
+import { HomeComponent } from './app/home/home.component';
 
 export const appRoutes: Routes = [
-    { path: 'members', component: MemberListComponent, canActivate: [AuthGuard], resolve: {users: MemberListResolver} },
-    { path: 'members/:id', component: MemberDetailComponent, canActivate: [AuthGuard], resolve: {user: MemberDetailResolver} },
-    { path: 'member/edit', component: MemberEditComponent, resolve: {user: MemberEditResolver}, canDeactivate: [PreventUnsavedChanges] },
-    { path: 'messages', component: MessagesComponent, canActivate: [AuthGuard], resolve: {messages: MessagesResolver }  },
-    { path: 'lists', component: ListsComponent, canActivate: [AuthGuard], resolve: {users: ListsResolver} },
-    // {
-    //     path: '',
-    //     runGuardsAndResolvers: 'always',
-    //     canActivate: [AuthGuard],
-    //     children: []
-    // },
+    {
+        path: '',
+        runGuardsAndResolvers: 'always',
+        canActivate: [AuthGuard],
+        children: [
+            { path: 'members', component: MemberListComponent, resolve: {users: MemberListResolver} },
+            { path: 'members/:id', component: MemberDetailComponent, resolve: {user: MemberDetailResolver} },
+            { path: 'member/edit', component: MemberEditComponent, resolve: {user: MemberEditResolver},
+                canDeactivate: [PreventUnsavedChanges] },
+            { path: 'messages', component: MessagesComponent, resolve: {messages: MessagesResolver }  },
+            { path: 'lists', component: ListsComponent, resolve: {users: ListsResolver} },
+            { path: 'admin', component: AdminPanelComponent, data: { roles: ['Admin', 'Moderator'] }},
+        ]
+    },
     { path: '**', redirectTo: '', pathMatch: 'full' },
 ];
 

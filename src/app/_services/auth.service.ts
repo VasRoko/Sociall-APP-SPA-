@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 import { AlertifyjsService } from '../_services/alertifyjs.service';
 import { environment } from 'src/environments/environment';
 import { User } from '../_models/user';
+import { t } from '@angular/core/src/render3';
 
 @Injectable({
   providedIn: 'root'
@@ -50,7 +51,20 @@ export class AuthService {
     this.decodedToken = null;
     this.currentUser = null;
     this.alertify.message('Logged out');
-    this.router.navigate(['/']);
+    this.router.navigate(['']);
+  }
+
+  checkRole(allowedRoles): boolean {
+    let isTrue = false;
+    const userRoles = this.decodedToken.role as Array<string>;
+    allowedRoles.forEach(element => {
+      if (userRoles.includes(element)) {
+        isTrue = true;
+        return;
+      }
+    });
+
+    return isTrue;
   }
 
   register(user: User) {

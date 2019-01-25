@@ -30,3 +30,13 @@ img {
     font-weight: 900;
     padding: 0px 11px;
 }
+
+.nav-item {
+    font-size: 14px;
+    font-weight: 800;
+}
+
+
+a > i {
+    color: #007bff;
+}

@@ -30,6 +30,10 @@ export class ListsComponent implements OnInit {
     this.likesParam = 'Likers';
   }
 
+  setLike(id: number) {
+    this.users.splice(this.users.findIndex(m => m.id === id), 1);
+  }
+
   loadUsers() {
     this.userService.getUsers(this.pagination.currentPage, this.pagination.itemsPerPage, null, this.likesParam)
     .subscribe((res: PaginatedResult<User[]>) => {

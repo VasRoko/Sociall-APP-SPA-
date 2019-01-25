@@ -6,17 +6,26 @@
 
   <div class="collapse navbar-collapse" id="navbarColor03">
     <div class="col-sm-12 col-md-6">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item active" routerLinkActive="active">
-                <a class="nav-link" [routerLink]="['/lists']" >Lists <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item active" routerLinkActive="active">
-                <a class="nav-link" [routerLink]="['/messages']" > 
-                  Messages <span class="sr-only">(current)</span>
-                  <div *ngIf="messageCount > 0" class="badge badge-danger"><i class="fa fa-bell m2"></i></div>
-                </a>
-            </li>
-          </ul>
+      <ul class="navbar-nav mr-auto">
+          <li class="nav-item active" routerLinkActive="active">
+              <a class="nav-link" [routerLink]="['/lists']" >
+                <i class="fa fa-heart m2"></i>
+                Lists <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item active" routerLinkActive="active">
+              <a class="nav-link" [routerLink]="['/messages']" > 
+                <i class="fa fa-envelope m2"></i>
+                Messages <span class="sr-only">(current)</span>
+                <!-- <div class="badge badge-danger"><i class="fa fa-bell"></i></div> -->
+              </a>
+          </li>
+          <li *appHasRole="['Admin', 'Moderator']" class="nav-item active" routerLinkActive="active">
+            <a class="nav-link" [routerLink]="['/admin']" > 
+              <i class="fa fa-user m2"></i>
+              Admin Panel <span class="sr-only">(current)</span>
+            </a>
+          </li>
+        </ul>
     </div>
 
     <div class="col-sm-12 col-md-6">
@@ -25,9 +34,9 @@
             
               <a class="nav-link dropdown-toggle" data-toggle="dropdown" dropdownToggle>
                 <span>
-                  <img src="{{ photoUrl || '../../assets/img/placeholder-user.png'  }}" class="" alt="{{ authService.currentUser.username }}">
+                  <img src="{{ photoUrl || '../../assets/img/placeholder-user.png'  }}" class="" alt="{{ authService.currentUser.userName }}">
                 </span>
-                <span class="text-capitalize">{{ authService.currentUser.username }}</span>
+                <span class="text-capitalize">{{ authService.currentUser.userName }}</span>
               </a>
     
               
