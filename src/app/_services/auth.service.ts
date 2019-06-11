@@ -7,11 +7,11 @@ import { Router } from '@angular/router';
 import { AlertifyjsService } from '../_services/alertifyjs.service';
 import { environment } from 'src/environments/environment';
 import { User } from '../_models/user';
-import { t } from '@angular/core/src/render3';
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class AuthService {
   baseUrl = environment.apiUrl + 'auth/';
   jwtHelper = new JwtHelperService();
@@ -40,6 +40,7 @@ export class AuthService {
         })
       );
   }
+  
   loggedIn() {
     const token = localStorage.getItem('token');
     return !this.jwtHelper.isTokenExpired(token);

@@ -12,7 +12,6 @@ export class NavComponent implements OnInit {
   photoUrl: string;
   messageCount: number;
   messageAvailabe = false;
-
   constructor(public authService: AuthService, private userService: UserService, private alertify: AlertifyjsService) { }
 
   ngOnInit() {
